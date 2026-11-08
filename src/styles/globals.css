@@ -1,0 +1,192 @@
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* RentApp brand palette */
+:root {
+  --onyx: rgb(10, 23, 29);
+  --wheat: rgb(255, 246, 233);
+  --oceanic: rgb(0, 63, 71);
+  --nectarine: rgb(255, 189, 118);
+  --white: rgb(255, 255, 255);
+
+  /* Light mode */
+  --bg: var(--wheat);
+  --surface: var(--white);
+  --surface-secondary: rgb(250, 239, 222);
+
+  --text: var(--onyx);
+  --text-soft: rgba(10, 23, 29, 0.65);
+
+  --accent: var(--nectarine);
+  --accent-text: var(--onyx);
+
+  --secondary: var(--oceanic);
+  --secondary-text: var(--wheat);
+
+  --border: rgba(10, 23, 29, 0.12);
+  --shadow: rgba(10, 23, 29, 0.10);
+
+  --danger: rgb(185, 52, 52);
+  --success: rgb(32, 112, 82);
+  --info: rgb(0, 95, 105);
+
+  --sans: "Poppins", system-ui, sans-serif;
+  --heading: "Poppins", system-ui, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: light;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode */
+html.dark {
+  --bg: rgb(10, 23, 29);
+  --surface: rgb(18, 36, 44);
+  --surface-secondary: rgb(25, 45, 52);
+
+  --text: var(--wheat);
+  --text-soft: rgba(255, 246, 233, 0.68);
+
+  --accent: var(--nectarine);
+  --accent-text: var(--onyx);
+
+  --secondary: rgb(0, 83, 91);
+  --secondary-text: var(--wheat);
+
+  --border: rgba(255, 246, 233, 0.13);
+  --shadow: rgba(0, 0, 0, 0.35);
+
+  --danger: rgb(255, 135, 135);
+  --success: rgb(116, 210, 163);
+  --info: rgb(126, 211, 218);
+
+  color-scheme: dark;
+}
+
+/* Tailwind v4 theme tokens */
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+
+  --color-text: var(--text);
+  --color-text-soft: var(--text-soft);
+
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-text: var(--secondary-text);
+
+  --color-border: var(--border);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-info: var(--info);
+
+  --font-sans: var(--sans);
+  --font-heading: var(--heading);
+  --font-mono: var(--mono);
+}
+
+/* Global reset */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.1px;
+  color: var(--text);
+  background: var(--bg);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+input,
+textarea,
+select {
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--heading);
+  color: var(--text);
+}
+
+::selection {
+  color: var(--accent-text);
+  background: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
