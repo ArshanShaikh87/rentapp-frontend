@@ -1,9 +1,25 @@
+const variants = {
+  primary:
+    "bg-secondary text-secondary-text shadow-lg shadow-secondary/15 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-xl",
+  outline:
+    "border border-border bg-surface text-text hover:bg-surface-secondary",
+  danger:
+    "bg-danger text-white shadow-lg shadow-danger/15 hover:-translate-y-0.5 hover:opacity-90",
+};
+
+const sizes = {
+  md: "min-h-12 px-5 py-3",
+  sm: "min-h-10 px-4 py-2",
+};
 
 export default function Button({
   children,
   type = "button",
   loading = false,
   disabled = false,
+  variant = "primary",
+  size = "md",
+  fullWidth = true,
   className = "",
   ...props
 }) {
@@ -11,7 +27,9 @@ export default function Button({
     <button
       type={type}
       disabled={disabled || loading}
-      className={`inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-secondary px-5 py-3 text-sm font-semibold text-secondary-text shadow-lg shadow-secondary/15 transition duration-200 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-xl text-sm font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 ${
+        fullWidth ? "w-full" : ""
+      } ${sizes[size]} ${variants[variant]} ${className}`}
       {...props}
     >
       {loading && (

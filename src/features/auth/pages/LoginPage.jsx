@@ -1,24 +1,24 @@
 
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 import AuthLayout from "../../../layouts/AuthLayout";
+import ThemeToggle from "../../../components/ui/ThemeToggle";
 
 export default function LoginPage() {
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
+  // useEffect(() => {
+  //   document.documentElement.classList.toggle("dark", darkMode);
 
-    return () => {
-      document.documentElement.classList.remove("dark");
-    };
-  }, [darkMode]);
+  //   return () => {
+  //     document.documentElement.classList.remove("dark");
+  //   };
+  // }, [darkMode]);
 
   return (
     <div className="min-h-screen bg-bg text-text transition-colors duration-200">
       <header className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-4 sm:px-8 lg:px-12 xl:px-16">
-        <a
-          href="/"
+        <Link to="/"
           className="inline-flex items-center gap-3 rounded-xl no-underline"
           aria-label="RentApp home"
         >
@@ -29,9 +29,9 @@ export default function LoginPage() {
           <span className="text-xl font-semibold tracking-tight text-text">
             Rent<span className="text-secondary">App</span>
           </span>
-        </a>
+        </Link>
 
-        <button
+        {/* <button
           type="button"
           onClick={() => setDarkMode((current) => !current)}
           aria-label={
@@ -70,7 +70,8 @@ export default function LoginPage() {
               <span>Dark mode</span>
             </>
           )}
-        </button>
+        </button> */}
+        <ThemeToggle />
       </header>
 
       <main>

@@ -1,6 +1,6 @@
-
 import { Bell, LogOut, Menu } from "lucide-react";
 import { useAuth } from "../../features/auth/context/AuthContext";
+import ThemeToggle from "../ui/ThemeToggle";
 
 function Topbar({ onMenuClick }) {
   const { user, logout } = useAuth();
@@ -23,17 +23,17 @@ function Topbar({ onMenuClick }) {
         </button>
 
         <div>
-          <h2 className="text-lg font-semibold text-text">
-            Welcome back!
-          </h2>
-          <p className="text-sm text-text-soft">
+          <h2 className="mb-0 text-lg font-semibold text-text">Welcome back!</h2>
+          <p className="mb-0 text-sm text-text-soft">
             Here's what's happening with your properties.
           </p>
         </div>
       </div>
 
       {/* Right section */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 sm:gap-4">
+        <ThemeToggle variant="icon" />
+
         <button
           type="button"
           className="relative rounded-full p-2 text-text-soft transition-colors hover:bg-surface-secondary hover:text-text"
@@ -46,11 +46,11 @@ function Topbar({ onMenuClick }) {
         <div className="hidden h-9 w-px bg-border sm:block" />
 
         <div className="hidden text-right sm:block">
-          <p className="text-sm font-semibold text-text">
+          <p className="mb-0 text-sm font-semibold text-text">
             {user?.loginId || "Owner"}
           </p>
-          <p className="text-xs capitalize text-text-soft">
-            {user?.role || "Owner"}
+          <p className="mb-0 text-xs capitalize text-text-soft">
+            {user?.role?.toLowerCase() || "owner"}
           </p>
         </div>
 

@@ -1,28 +1,18 @@
-
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Sidebar from "../components/layout/Sidebar";
 import Topbar from "../components/layout/Topbar";
 
-function OwnerLayout({
-  children,
-  activeItem = "Dashboard",
-  onNavigate,
-})  {
+// Route layout: child pages render through <Outlet />.
+function OwnerLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-const handleNavigation = (page) => {
-  onNavigate?.(page);
-  setIsSidebarOpen(false);
-};
+  const closeSidebar = () => setIsSidebarOpen(false);
 
   return (
     <div className="flex min-h-screen bg-bg">
       {/* Desktop Sidebar */}
       <div className="hidden lg:block">
-        <Sidebar
-          activeItem={activeItem}
-          onNavigate={handleNavigation}
-        />
+        <Sidebar />
       </div>
 
       {/* Mobile Sidebar */}
@@ -32,14 +22,11 @@ const handleNavigation = (page) => {
             type="button"
             aria-label="Close navigation"
             className="absolute inset-0 bg-black/50"
-            onClick={() => setIsSidebarOpen(false)}
+            onClick={closeSidebar}
           />
 
           <div className="relative z-10 h-full w-64">
-            <Sidebar
-              activeItem={activeItem}
-              onNavigate={handleNavigation}
-            />
+            <Sidebar onNavigate={closeSidebar} />
           </div>
         </div>
       )}
@@ -49,7 +36,7 @@ const handleNavigation = (page) => {
         <Topbar onMenuClick={() => setIsSidebarOpen(true)} />
 
         <main className="flex-1 p-6">
-          {children}
+          <Outlet />
         </main>
       </div>
     </div>
